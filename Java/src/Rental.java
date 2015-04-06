@@ -93,4 +93,9 @@ public class Rental extends JFrame {
         this();
         this.controller = controller;
     }
+
+    public Rental(Controller controller, int dvdID) {
+        this(controller);
+        dvdIDField.setText(dvdID + "");
+    }
 }

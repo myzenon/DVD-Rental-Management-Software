@@ -36,6 +36,12 @@ public class Program extends JFrame {
                 new Return(controller);
             }
         });
+        DVDButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new DVDMenu(controller);
+                close();
+            }
+        });
     }
 
 

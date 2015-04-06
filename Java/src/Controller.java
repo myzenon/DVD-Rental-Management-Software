@@ -33,7 +33,7 @@ public class Controller {
 
     // Add DVD
     public void addDVD(String name, int category, boolean type, int price) {
-        dbDVD.put(pointerDVD,new DVD(pointerDVD,name,category,type,price));
+        dbDVD.put(pointerDVD, new DVD(pointerDVD, name, category, type, price));
         pointerDVD++;
     }
 
@@ -106,6 +106,11 @@ public class Controller {
     public void addCategory(String categoryName) {
         dbCategory.put(pointerCategory,categoryName);
         pointerCategory++;
+    }
+
+    // Find Category
+    public String findCategory(int categoryID) {
+        return dbCategory.get(categoryID);
     }
 
     // Delete Category
@@ -203,8 +208,9 @@ public class Controller {
     // Test Data
     private void testData() {
         addCategory("Cate 1");
-        addDVD("Movie", 0, false, 200);
+        addDVD("Movie", 0, true, 200);
         addMember("Zenon", "SI", "ee", "email", "00003", true);
+        rentalDVD(0,0,1,1,2001);
     }
 
 

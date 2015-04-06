@@ -45,7 +45,7 @@ public class Return extends JFrame {
                                         if ((month > 0) && (month < 13)) {
                                             if ((day > 0) && (day <= Checker.endDayofMonth(month, year))) {
                                                 int memberID = controller.findDVD(dvdID).getMemberID();
-                                                int balance = controller.returnDVD(dvdID,day,month,year,brokenBox.isSelected());
+                                                int balance = controller.returnDVD(dvdID, day, month, year, brokenBox.isSelected());
                                                 if (balance >= 0) {
                                                     JOptionPane.showMessageDialog(null, "OK : " + controller.findMember(memberID).getFirstName() + " must pay " + balance + " Baht", "Complete", JOptionPane.PLAIN_MESSAGE);
                                                     close();
@@ -88,4 +88,8 @@ public class Return extends JFrame {
         this.controller = controller;
     }
 
+    public Return(Controller controller, int dvdID) {
+        this(controller);
+        dvdIDField.setText(dvdID + "");
+    }
 }
