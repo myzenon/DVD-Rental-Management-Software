@@ -31,6 +31,11 @@ public class Program extends JFrame {
                 new Rental(controller);
             }
         });
+        returnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Return(controller);
+            }
+        });
     }
 
 

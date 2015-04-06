@@ -24,6 +24,7 @@ public class Rental extends JFrame {
         setLocationRelativeTo(null); // to set position center on start
         pack();
         setVisible(true);
+        getRootPane().setDefaultButton(rentButton);
         rentButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String dvdIDText = dvdIDField.getText();
@@ -52,6 +53,7 @@ public class Rental extends JFrame {
                                                             close();
                                                         } else if (balance == -1) {
                                                             JOptionPane.showMessageDialog(null, "Error : Already rented", "Error / DVD", JOptionPane.ERROR_MESSAGE);
+                                                            close();
                                                         }
                                                     } else {
                                                         JOptionPane.showMessageDialog(null, "Error : Day incorrect", "Error / Day Field", JOptionPane.ERROR_MESSAGE);

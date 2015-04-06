@@ -27,6 +27,7 @@ public class Controller {
         dbMember = new HashMap<Integer,Member>();
         dbCategory = new HashMap<Integer,String>();
         pointerCategory = 0;
+        testData();
         new Program(this);
     }
 
@@ -71,12 +72,15 @@ public class Controller {
      }
 
     // Return DVD [Have to pay]
-    // -1 for DVD never rented | -2 for Not Found DVD
+    // -1 for DVD never rented | -2 for Not Found DVD | -3 For Incorrect Date
     public int returnDVD(int dvdID, int returnDay, int returnMonth, int returnYear, boolean isBroken) {
         DVD dvd = findDVD(dvdID);
         if(dvd != null) {
             if(dvd.getMemberID() != -1) {
                 int totalDay = dvd.compareRentDay(returnDay,returnMonth,returnYear);
+                if(totalDay < 0) {
+                    return -3;
+                }
                 int totalBalance = 0;
                 if(dvd.getType())
                     totalDay -= newTypeDays;
@@ -88,6 +92,7 @@ public class Controller {
                 if(isBroken) {
                     totalBalance += dvd.getPrice() * 2; // If DVD is broken | 2 Times of Price Baht
                 }
+                dvd.setRental(-1,0,0,0);
                 return totalBalance;
             }
             else {
@@ -192,12 +197,15 @@ public class Controller {
 
     // Start Point -> Start Program
     public static void main(String[] args) {
-        Controller c = new Controller();
-        c.addCategory("Cate 1");
-        c.addDVD("Movie",0,false,200);
-        c.addMember("Zenon","SI","ee","email","00003",true);
+        new Controller();
     }
 
+    // Test Data
+    private void testData() {
+        addCategory("Cate 1");
+        addDVD("Movie", 0, false, 200);
+        addMember("Zenon", "SI", "ee", "email", "00003", true);
+    }
 
 
 }

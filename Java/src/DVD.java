@@ -37,14 +37,14 @@ public class DVD {
 
     // Method to compare between rent date <-> return date
     public int compareRentDay(int returnDay, int returnMonth, int returnYear) {
-        Date startDate = new Date(this.rentYear,this.rentMonth,this.rentDay);
-        Date endDate = new Date(returnYear,returnMonth,returnDay);
+        Date startDate = new Date(this.rentYear-1900,this.rentMonth-1,this.rentDay); // Start 1900-01-00
+        Date endDate = new Date(returnYear-1900,returnMonth-1,returnDay); // Start 1900-01-00
         /*
              Divided 1000 for change to seconds
              Divided 3600 for change to hours
              Divided 24 for change to days
          */
-        return (int)(endDate.getTime() - startDate.getTime()) /  1000 / 3600 / 24;
+        return (int)((endDate.getTime() - startDate.getTime()) /  1000 / 3600 / 24);
     }
 
     // Getter
@@ -88,6 +88,4 @@ public class DVD {
     public int getRentYear() {
         return rentYear;
     }
-
-    private void a() {}
 }

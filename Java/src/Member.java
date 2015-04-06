@@ -54,5 +54,4 @@ public class Member {
         return gender;
     }
 
-    private void a() {}
 }
