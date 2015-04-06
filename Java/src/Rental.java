@@ -14,6 +14,10 @@ public class Rental extends JFrame {
 
     private Controller controller;
 
+    private void close() {
+        this.dispose();
+    }
+
     public Rental() {
         super("Rental");
         setContentPane(Panel);
@@ -44,27 +48,28 @@ public class Rental extends JFrame {
                                                     if ((day > 0) && (day <= Checker.endDayofMonth(month, year))) {
                                                         int balance = controller.rentalDVD(dvdID, memberID, day, month, year);
                                                         if (balance > 0) {
-                                                            // show balance
-                                                        } else {
-                                                            // already rented
+                                                            JOptionPane.showMessageDialog(null, "OK : " + controller.findMember(memberID).getFirstName() + " must pay " + balance + " Baht", "Complete", JOptionPane.PLAIN_MESSAGE);
+                                                            close();
+                                                        } else if (balance == -1) {
+                                                            JOptionPane.showMessageDialog(null, "Error : Already rented", "Error / DVD", JOptionPane.ERROR_MESSAGE);
                                                         }
                                                     } else {
-                                                        // day incorrect
+                                                        JOptionPane.showMessageDialog(null, "Error : Day incorrect", "Error / Day Field", JOptionPane.ERROR_MESSAGE);
                                                     }
                                                 } else {
-                                                    // month not correct
+                                                    JOptionPane.showMessageDialog(null, "Error : Month incorrect", "Error / Month Field", JOptionPane.ERROR_MESSAGE);
                                                 }
                                             } else {
-                                                // year cant minus
+                                                JOptionPane.showMessageDialog(null, "Error : Year incorrect", "Error / Year Field", JOptionPane.ERROR_MESSAGE);
                                             }
                                         } else {
-                                            // year string
+                                            JOptionPane.showMessageDialog(null, "Error : Please input only number in Year field", "Error / Year Field", JOptionPane.ERROR_MESSAGE);
                                         }
                                     } else {
-                                        // month string
+                                        JOptionPane.showMessageDialog(null, "Error : Please input only number in Month field", "Error / Month Field", JOptionPane.ERROR_MESSAGE);
                                     }
                                 } else {
-                                    // day string
+                                    JOptionPane.showMessageDialog(null, "Error : Please input only number in Day field", "Error / Day Field", JOptionPane.ERROR_MESSAGE);
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(null, "Error : Can't found this Member ID", "Error / Member ID Field", JOptionPane.ERROR_MESSAGE);

@@ -192,7 +192,10 @@ public class Controller {
 
     // Start Point -> Start Program
     public static void main(String[] args) {
-        new Controller();
+        Controller c = new Controller();
+        c.addCategory("Cate 1");
+        c.addDVD("Movie",0,false,200);
+        c.addMember("Zenon","SI","ee","email","00003",true);
     }
 
 
