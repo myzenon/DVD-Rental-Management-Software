@@ -92,10 +92,14 @@ public class DetailDVD extends JFrame {
         });
     }
 
-
     public DetailDVD(Controller controller) {
         this();
         this.controller = controller;
+    }
+
+    public DetailDVD(Controller controller, DVD dvd) {
+        this(controller);
+        setDataDVD(dvd);
     }
 
     private void setDataDVD (DVD dvd) {

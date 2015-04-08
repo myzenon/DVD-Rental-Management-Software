@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,6 +114,10 @@ public class Controller {
         return dbCategory.get(categoryID);
     }
 
+    public Map<Integer,String> getCategory() {
+        return this.dbCategory;
+    }
+
     // Delete Category
     public void deleteCategory(int categoryID) {
         dbCategory.remove(categoryID);
@@ -213,5 +218,17 @@ public class Controller {
         rentalDVD(0,0,1,1,2001);
     }
 
+    public Collection<DVD> getListDVD(int categoryID) {
+        if(categoryID >= 0) {
+            Collection<DVD> collectionDVD = new ArrayList<DVD>();
+            for(DVD dvd : dbDVD.values()) {
+                if(dvd.getCategoryID() == categoryID) {
+                    collectionDVD.add(dvd);
+                }
+            }
+            return collectionDVD;
+        }
+        return dbDVD.values();
+    }
 
 }

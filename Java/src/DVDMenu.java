@@ -34,6 +34,11 @@ public class DVDMenu extends JFrame {
                 new DetailDVD(controller);
             }
         });
+        listButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new ListDVD(controller);
+            }
+        });
     }
 
     public DVDMenu(Controller controller) {

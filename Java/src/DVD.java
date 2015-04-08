@@ -88,4 +88,8 @@ public class DVD {
     public int getRentYear() {
         return rentYear;
     }
+
+    public String toString() {
+        return "{" + dvdID + "} " + name;
+    }
 }
